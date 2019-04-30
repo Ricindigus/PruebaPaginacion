@@ -69,6 +69,5 @@ public class MainActivity extends AppCompatActivity {
         personas.add(new Persona("Ricardo",33));
         personas.add(new Persona("Ricardo",33));
         personas.add(new Persona("Ricardo",33));
-        personas.add(new Persona("Ricardo",33));
     }
 }

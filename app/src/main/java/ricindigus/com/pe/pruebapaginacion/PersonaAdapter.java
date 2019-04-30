@@ -31,8 +31,8 @@ public class PersonaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 totalItemCount = linearLayoutManager.getItemCount();
-                lastVisibleItem = linearLayoutManager.findLastVisibleItemPosition();
-                if (!isLoading && totalItemCount<=(lastVisibleItem+visibleTreshold)){
+                lastVisibleItem = linearLayoutManager.findLastVisibleItemPosition() + 1;
+                if (!isLoading && totalItemCount<=(lastVisibleItem)){
                     if (loadMore != null){
                         loadMore.onLoadMore();
                     }
