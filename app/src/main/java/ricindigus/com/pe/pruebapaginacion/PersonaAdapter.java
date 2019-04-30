@@ -36,8 +36,9 @@ public class PersonaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     if (loadMore != null){
                         loadMore.onLoadMore();
                     }
+                    isLoading = true;
                 }
-                isLoading = true;
+
             }
         });
     }
@@ -49,6 +50,10 @@ public class PersonaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     public void setLoadMore(LoadMore loadMore) {
         this.loadMore = loadMore;
+    }
+
+    public void setLoaded() {
+        isLoading = false;
     }
 
     @NonNull
@@ -72,14 +77,15 @@ public class PersonaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             personaHolder.txtNombre.setText(currentPersona.getNombre());
             personaHolder.txtEdad.setText(currentPersona.getEdad()+"");
         }else if (viewHolder instanceof LoadingHolder){
-
+            LoadingHolder loadingHolder = (LoadingHolder) viewHolder;
+            loadingHolder.progressBar.setIndeterminate(true);
         }
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return personas.size();
     }
 
     public static class LoadingHolder extends RecyclerView.ViewHolder {
